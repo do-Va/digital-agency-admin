@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 const Button = ({ content, minWidth, maxWidth, minHeight, maxHeight }) => {
   return (
     <ButtonWrapper
+      type="submit"
       style={{
         '--min-width': minWidth,
         '--max-width': maxWidth,
@@ -15,7 +16,7 @@ const Button = ({ content, minWidth, maxWidth, minHeight, maxHeight }) => {
   );
 };
 
-const ButtonWrapper = styled.a`
+const ButtonWrapper = styled.button`
   display: grid;
   place-content: center;
   width: clamp(var(--min-width), 26vw, var(--max-width));
@@ -23,6 +24,7 @@ const ButtonWrapper = styled.a`
   background-color: var(--dark-blue);
   color: var(--white);
   box-shadow: 0px 20px 40px 5px rgba(0, 0, 0, 0.25);
+  border: none;
   cursor: pointer;
 `;
 

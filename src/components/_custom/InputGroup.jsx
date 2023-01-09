@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro';
+import { useDispatch } from 'react-redux';
 
-const InputGroup = ({ name, title, textarea, type }) => {
+const InputGroup = ({ name, title, textarea, type, method }) => {
+  const dispatch = useDispatch();
+
   return (
     <InputGroupWrapper>
       <label htmlFor={name}>{title}</label>
@@ -8,7 +11,14 @@ const InputGroup = ({ name, title, textarea, type }) => {
       {textarea ? (
         <textarea name={name} id={name}></textarea>
       ) : (
-        <input type={type || 'text'} name={name} id={name} />
+        <input
+          type={type || 'text'}
+          name={name}
+          id={name}
+          onChange={evn =>
+            dispatch(method({ name: evn.target.name, value: evn.target.value }))
+          }
+        />
       )}
     </InputGroupWrapper>
   );

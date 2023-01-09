@@ -1,13 +1,35 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
-import { Button, InputGroup, Logo } from '../_custom';
+
 import { mediaQuery } from '../../utils/styles-values';
+import { Button, InputGroup, Logo } from '../_custom';
+import { changeUserState, loginUser } from '../../redux/user/userSlice';
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const { email, password } = useSelector(store => store.user);
+
+  const handleSubmit = evn => {
+    evn.preventDefault();
+
+    dispatch(loginUser({ email, password }));
+  };
+
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={handleSubmit}>
       <Logo />
-      <InputGroup name="email" title="Email" type="email" />
-      <InputGroup name="password" type="password" title="Password" />
+      <InputGroup
+        method={changeUserState}
+        name="email"
+        title="Email"
+        type="email"
+      />
+      <InputGroup
+        method={changeUserState}
+        name="password"
+        type="password"
+        title="Password"
+      />
       <Button
         content="Login"
         minWidth="100px"
