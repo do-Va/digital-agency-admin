@@ -16,7 +16,7 @@ const Form = () => {
   };
 
   return (
-    <FormWrapper onSubmit={handleSubmit}>
+    <FormWrapper>
       <Logo />
       <InputGroup
         method={changeUserState}
@@ -31,11 +31,13 @@ const Form = () => {
         title="Password"
       />
       <Button
+        type="submit"
         content="Login"
         minWidth="100px"
         maxWidth="150px"
         minHeight="50px"
         maxHeight="70px"
+        method={handleSubmit}
       />
     </FormWrapper>
   );
@@ -47,7 +49,7 @@ const FormWrapper = styled.form`
   height: 500px;
   background-color: var(--white);
   padding: 50px 10px;
-  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   border-radius: 6px;
   display: flex;
   flex-direction: column;

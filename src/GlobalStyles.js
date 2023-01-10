@@ -32,12 +32,18 @@ const GlobalStyles = createGlobalStyle`
   --gray-light: #b8b8b8;
   /* *** END OF COLORS *** */
 
+  --box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+  --radius: 6px;
+
   --max-width: 1656px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-* { margin: 0; }
+* { 
+  margin: 0; 
+  padding: 0; 
+}
 
 html { 
   font-size: 100%; /*16px*/
@@ -79,7 +85,7 @@ img, picture, video, canvas, svg {
   object-fit: cover;
 }
 
-ul { list-style: none; }
+ul, li { list-style: none; }
 
 a { 
   text-decoration: none; 
@@ -114,6 +120,14 @@ small, .text_small { font-size: var(--fs-sm); }
   width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+.content-container {
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  padding: 20px 20px;
+  border-radius: var(--radius)
 }
 `;
 
