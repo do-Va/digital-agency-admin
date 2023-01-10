@@ -1,25 +1,33 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userThunk } from './userThunk';
+import { userGetThunk, getCurrentUserThunk, userPostThunk } from './userThunk';
 import customFetch from '../../utils/customFetch';
 
 const initialState = {
   user: null,
   email: '',
   password: '',
-  userLoading: false,
+  isLoading: false,
+  userLoading: true,
 };
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, thunkAPI) => {
-    return userThunk('/auth/login/', user, thunkAPI);
+    return userPostThunk('/auth/login/', user, thunkAPI);
   }
 );
 
 export const logoutUser = createAsyncThunk(
-  'user/loginUser',
+  'user/logoutUser',
   async (user, thunkAPI) => {
-    return userThunk('/auth/logout/', user, thunkAPI);
+    return userGetThunk('/auth/logout/', user, thunkAPI);
+  }
+);
+
+export const getCurrentUser = createAsyncThunk(
+  'user/getCurrentUser',
+  async thunkAPI => {
+    return getCurrentUserThunk('/auth/getCurrentUser/', thunkAPI);
   }
 );
 
@@ -28,10 +36,10 @@ customFetch.interceptors.response.use(
     return response;
   },
   error => {
-    // console.log(error.response)
     if (error.response.status === 401) {
       logoutUser();
     }
+
     return Promise.reject(error);
   }
 );
@@ -45,17 +53,29 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
+    // Login User
     [loginUser.pending]: state => {
-      state.userLoading = true;
+      state.isLoading = true;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      state.userLoading = false;
+      state.isLoading = false;
       state.user = payload.user;
     },
     [loginUser.rejected]: (state, { payload }) => {
-      state.userLoading = false;
+      state.isLoading = false;
       state.error = payload;
     },
+
+    // Get Current User
+    [getCurrentUser.pending]: state => {
+      state.userLoading = true;
+    },
+    [getCurrentUser.fulfilled]: (state, { payload }) => {
+      state.userLoading = false;
+      state.user = payload.user;
+    },
+
+    // Logout User
     [logoutUser.fulfilled]: state => {
       state.user = null;
       state.userLoading = false;
