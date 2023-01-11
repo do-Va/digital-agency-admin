@@ -1,20 +1,21 @@
-import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Login, ProtectedRoute } from './pages';
 import { Dashboard, Header } from './components/dashboard';
-import { getCurrentUser } from './redux/user/userSlice';
+import { useEffect } from 'react';
 
 function App() {
-  const dispatch = useDispatch();
+  const { user } = useSelector(store => store.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+    user && navigate('/admin-dashboard');
+  }, [user, navigate]);
 
   return (
     <Routes>
       <Route path="/" element={<Login />} />
+
       <Route
         path="/admin-dashboard"
         element={

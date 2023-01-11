@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { useDispatch } from 'react-redux';
 
-const InputGroup = ({ name, title, textarea, type, method }) => {
+const InputGroup = ({ name, title, textarea, type, method, placeHolder }) => {
   const dispatch = useDispatch();
 
   return (
@@ -15,6 +15,7 @@ const InputGroup = ({ name, title, textarea, type, method }) => {
           type={type || 'text'}
           name={name}
           id={name}
+          placeholder={placeHolder}
           onChange={evn =>
             dispatch(method({ name: evn.target.name, value: evn.target.value }))
           }
@@ -32,6 +33,10 @@ const InputGroupWrapper = styled.div`
 
   label {
     font-size: var(--fs-md);
+  }
+
+  input::placeholder {
+    opacity: 0.3;
   }
 
   input,

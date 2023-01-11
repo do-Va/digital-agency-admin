@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userSlice } from '.';
+import { userSlice, menuSlice } from '.';
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
+    menu: menuSlice,
   },
 
   // devtoolsu production'da gösterme

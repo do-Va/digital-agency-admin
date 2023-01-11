@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
-
 import { mediaQuery } from '../../utils/styles-values';
 import { Button, InputGroup, Logo } from '../_custom';
 import { changeUserState, loginUser } from '../../redux/user/userSlice';

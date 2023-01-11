@@ -127,7 +127,11 @@ small, .text_small { font-size: var(--fs-sm); }
   background-color: var(--white);
   box-shadow: var(--box-shadow);
   padding: 20px 20px;
-  border-radius: var(--radius)
+  border-radius: var(--radius);
+
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 `;
 

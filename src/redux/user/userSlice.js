@@ -1,13 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userGetThunk, getCurrentUserThunk, userPostThunk } from './userThunk';
+import { userGetThunk, userPostThunk } from './userThunk';
 import customFetch from '../../utils/customFetch';
+import {
+  addToLocalStorage,
+  removeFromLocalStorage,
+  getFromLocalStorage,
+} from '../../utils/localStorage';
 
 const initialState = {
-  user: null,
+  user: getFromLocalStorage('user', null),
   email: '',
   password: '',
   isLoading: false,
-  userLoading: true,
+  userSuccess: false,
 };
 
 export const loginUser = createAsyncThunk(
@@ -21,13 +26,6 @@ export const logoutUser = createAsyncThunk(
   'user/logoutUser',
   async (user, thunkAPI) => {
     return userGetThunk('/auth/logout/', user, thunkAPI);
-  }
-);
-
-export const getCurrentUser = createAsyncThunk(
-  'user/getCurrentUser',
-  async thunkAPI => {
-    return getCurrentUserThunk('/auth/getCurrentUser/', thunkAPI);
   }
 );
 
@@ -60,25 +58,18 @@ const userSlice = createSlice({
     [loginUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.user = payload.user;
+      addToLocalStorage('user', state.user);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
 
-    // Get Current User
-    [getCurrentUser.pending]: state => {
-      state.userLoading = true;
-    },
-    [getCurrentUser.fulfilled]: (state, { payload }) => {
-      state.userLoading = false;
-      state.user = payload.user;
-    },
-
     // Logout User
     [logoutUser.fulfilled]: state => {
       state.user = null;
       state.userLoading = false;
+      removeFromLocalStorage('user');
     },
   },
 });

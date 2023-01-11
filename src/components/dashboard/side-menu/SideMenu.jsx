@@ -1,9 +1,17 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import sideMenus from '../../../constants/side-menus';
 import { SideMenuItem, SideMenuTitle } from '.';
 import { Button } from '../../_custom';
+import { logoutUser } from '../../../redux/user/userSlice';
 
 const SideMenu = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <SideMenuWrapper>
       <SideMenuTitle />
@@ -17,6 +25,7 @@ const SideMenu = () => {
         minHeight="50px"
         maxHeight="50px"
         radius="3px"
+        method={handleClick}
       />
     </SideMenuWrapper>
   );
