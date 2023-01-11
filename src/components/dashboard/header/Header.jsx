@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 import {
-  MultiInputGroup,
   Title,
   ListControl,
   FormControl,
@@ -12,6 +11,7 @@ import {
 import {
   createMenu,
   changeMenuState,
+  resetValue,
   getAllMenus,
 } from '../../../redux/dashboard/menuSlice';
 import ControlItem from './ControlItem';
@@ -34,6 +34,7 @@ const Header = () => {
 
   const handleSubmit = () => {
     dispatch(createMenu({ url: '/menus', value: { title, url } }));
+    dispatch(resetValue());
   };
 
   return (
@@ -47,12 +48,14 @@ const Header = () => {
             <InputGroup
               name="title"
               title="Title"
+              value={title}
               method={changeMenuState}
               placeHolder="Menu title"
             />
             <InputGroup
               name="url"
               title="Url"
+              value={url}
               method={changeMenuState}
               placeHolder="Menu url (#home)"
             />

@@ -34,7 +34,6 @@ export const deleteItemThunk = async (url, thunkAPI) => {
   try {
     const resp = await customFetch.delete(url);
 
-    console.log(resp.data);
     return resp.data;
   } catch (error) {
     console.log(error);

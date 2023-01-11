@@ -36,6 +36,7 @@ const SideMenuWrapper = styled.aside`
   box-shadow: var(--box-shadow);
   padding: 20px 20px;
   height: max-content;
+  flex-shrink: 0;
 
   display: flex;
   flex-direction: column;

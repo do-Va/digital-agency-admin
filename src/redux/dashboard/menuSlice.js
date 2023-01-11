@@ -44,12 +44,16 @@ export const deleteMenu = createAsyncThunk(
   }
 );
 
-const dashboardSlice = createSlice({
-  name: 'dashboard',
+const menuSlice = createSlice({
+  name: 'menu',
   initialState,
   reducers: {
     changeMenuState: (state, { payload }) => {
       state[payload.name] = payload.value;
+    },
+    resetValue: state => {
+      state.title = '';
+      state.url = '';
     },
   },
   extraReducers: {
@@ -71,8 +75,6 @@ const dashboardSlice = createSlice({
     [createMenu.fulfilled]: (state, { payload }) => {
       state.menuLoader = false;
       state.createSuccess = true;
-      state.url = '';
-      state.title = '';
     },
     [createMenu.rejected]: (state, { payload }) => {
       state.menuLoader = false;
@@ -107,6 +109,6 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { changeMenuState } = dashboardSlice.actions;
+export const { changeMenuState, resetValue } = menuSlice.actions;
 
-export default dashboardSlice.reducer;
+export default menuSlice.reducer;
