@@ -1,18 +1,26 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
+
 import { mediaQuery } from '../../utils/styles-values';
 import { Button, InputGroup, Logo } from '../_custom';
 import { changeUserState, loginUser } from '../../redux/user/userSlice';
 
 const Form = () => {
+  const { email, password, userSuccess } = useSelector(store => store.user);
   const dispatch = useDispatch();
-  const { email, password } = useSelector(store => store.user);
+  const navigate = useNavigate();
 
   const handleSubmit = evn => {
     evn.preventDefault();
 
     dispatch(loginUser({ email, password }));
   };
+
+  useEffect(() => {
+    userSuccess && navigate('/admin-dashboard');
+  }, [userSuccess, navigate]);
 
   return (
     <FormWrapper>

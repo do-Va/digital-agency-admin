@@ -1,4 +1,5 @@
 import userSlice from './user/userSlice';
 import menuSlice from './dashboard/menuSlice';
+import heroSlice from './dashboard/heroSlice';
 
-export { userSlice, menuSlice };
+export { userSlice, menuSlice, heroSlice };

@@ -1,30 +1,30 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Login, ProtectedRoute } from './pages';
-import { Dashboard, Header } from './components/dashboard';
-import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ProtectedLoginRoute, ProtectedDashboardRoute } from './pages';
+import { Dashboard, Header, Hero } from './components/dashboard';
+import Login from './components/login/Login';
 
 function App() {
-  const { user } = useSelector(store => store.user);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    user && navigate('/admin-dashboard');
-  }, [user, navigate]);
-
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedLoginRoute>
+            <Login />
+          </ProtectedLoginRoute>
+        }
+      />
 
       <Route
         path="/admin-dashboard"
         element={
-          <ProtectedRoute>
+          <ProtectedDashboardRoute>
             <Dashboard />
-          </ProtectedRoute>
+          </ProtectedDashboardRoute>
         }
       >
         <Route index element={<Header />} />
+        <Route path="hero" element={<Hero />} />
       </Route>
     </Routes>
   );

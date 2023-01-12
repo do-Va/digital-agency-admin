@@ -54,15 +54,18 @@ const userSlice = createSlice({
     // Login User
     [loginUser.pending]: state => {
       state.isLoading = true;
+      state.userSuccess = false;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.user = payload.user;
+      state.userSuccess = true;
       addToLocalStorage('user', state.user);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+      state.userSuccess = false;
     },
 
     // Logout User

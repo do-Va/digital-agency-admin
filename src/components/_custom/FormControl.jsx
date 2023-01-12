@@ -25,6 +25,10 @@ const FormControl = ({ children, method }) => {
 };
 
 const FormControlWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   & > :last-child {
     margin-top: 20px;
   }

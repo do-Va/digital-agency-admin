@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Form from '../components/login/Form';
+import Form from './Form';
 
 const Login = () => {
   return (

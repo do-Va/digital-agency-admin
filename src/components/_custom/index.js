@@ -6,6 +6,7 @@ import FormControl from './FormControl';
 import ListControl from './ListControl';
 import SubTitle from './SubTitle';
 import EditGroup from './EditGroup';
+import UploadContainer from './UploadContainer';
 
 export {
   InputGroup,
@@ -16,4 +17,5 @@ export {
   ListControl,
   SubTitle,
   EditGroup,
+  UploadContainer,
 };

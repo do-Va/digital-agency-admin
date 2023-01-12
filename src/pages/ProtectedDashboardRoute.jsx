@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedDashboardRoute = ({ children }) => {
   const { user, isLoading } = useSelector(store => store.user);
 
   if (isLoading) return <div>Loading</div>;
@@ -13,4 +13,4 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedDashboardRoute;

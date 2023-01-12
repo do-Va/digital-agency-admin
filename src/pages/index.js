@@ -1,4 +1,4 @@
-import Login from './Login';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedLoginRoute from './ProtectedLoginRoute';
+import ProtectedDashboardRoute from './ProtectedDashboardRoute';
 
-export { Login, ProtectedRoute };
+export { ProtectedLoginRoute, ProtectedDashboardRoute };
