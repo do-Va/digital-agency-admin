@@ -31,7 +31,7 @@ const sideMenus = [
     id: 4,
     name: 'services',
     Icon: TfiHeadphoneAlt,
-    url: '/admin-dashboard/services',
+    url: '/admin-dashboard/service',
   },
   {
     id: 5,

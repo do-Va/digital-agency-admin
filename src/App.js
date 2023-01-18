@@ -5,6 +5,7 @@ import {
   Dashboard,
   Header,
   Hero,
+  Service,
   OurTeam,
 } from './components/dashboard';
 import Login from './components/login/Login';
@@ -32,6 +33,7 @@ function App() {
         <Route index element={<Header />} />
         <Route path="hero" element={<Hero />} />
         <Route path="about" element={<About />} />
+        <Route path="service" element={<Service />} />
         <Route path="our-team" element={<OurTeam />} />
       </Route>
     </Routes>

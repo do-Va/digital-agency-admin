@@ -14,6 +14,7 @@ import {
   uploadHeroImage,
   getHero,
   changeHeroState,
+  changeImage,
 } from '../../../redux/dashboard/heroSlice';
 
 const Hero = () => {
@@ -26,6 +27,10 @@ const Hero = () => {
     dispatch(getHero('/hero'));
   }, [dispatch, updateSuccess]);
 
+  useEffect(() => {
+    dispatch(changeImage(hero.image));
+  }, [dispatch, hero]);
+
   const handleSubmit = evn => {
     dispatch(
       updateHero({
@@ -33,7 +38,7 @@ const Hero = () => {
         value: {
           title: hero.title,
           buttonContent: hero.buttonContent,
-          image: image.url,
+          image: image,
         },
       })
     );

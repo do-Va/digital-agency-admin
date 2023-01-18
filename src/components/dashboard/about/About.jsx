@@ -14,6 +14,7 @@ import {
   uploadAboutImage,
   getAbout,
   changeAboutState,
+  changeImage,
 } from '../../../redux/dashboard/aboutSlice';
 
 const About = () => {
@@ -25,6 +26,10 @@ const About = () => {
     dispatch(getAbout('/about'));
   }, [dispatch, updateSuccess]);
 
+  useEffect(() => {
+    dispatch(changeImage(about.image));
+  }, [dispatch, about]);
+
   const handleSubmit = evn => {
     dispatch(
       updateAbout({
@@ -33,7 +38,7 @@ const About = () => {
           title: about.title,
           description: about.description,
           buttonContent: about.buttonContent,
-          image: image.url,
+          image: image,
         },
       })
     );
@@ -55,7 +60,7 @@ const About = () => {
             title="Title"
             value={about.title}
             method={changeAboutState}
-            placeHolder="Menu title"
+            placeHolder="About title"
           />
 
           <InputGroup
@@ -64,7 +69,7 @@ const About = () => {
             title="Description"
             value={about.description}
             method={changeAboutState}
-            placeHolder="Menu title"
+            placeHolder="Description"
           />
 
           <InputGroup
@@ -72,7 +77,7 @@ const About = () => {
             title="Button Content"
             value={about.buttonContent}
             method={changeAboutState}
-            placeHolder="Menu url (#home)"
+            placeHolder="Button content"
           />
 
           <UploadContainer method={uploadAboutImage} />

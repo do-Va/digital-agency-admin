@@ -13,7 +13,7 @@ const initialState = {
   updateLoader: false,
   updateSuccess: false,
   uploadLoader: false,
-  uploadSuccess: false,
+  uploadSuccess: true,
 };
 
 export const getHero = createAsyncThunk(
@@ -43,6 +43,9 @@ const heroSlice = createSlice({
   reducers: {
     changeHeroState: (state, { payload }) => {
       state.hero = { ...state.hero, [payload.name]: payload.value };
+    },
+    changeImage: (state, { payload }) => {
+      state.image = payload;
     },
   },
   extraReducers: {
@@ -77,7 +80,7 @@ const heroSlice = createSlice({
     [uploadHeroImage.fulfilled]: (state, { payload }) => {
       state.uploadLoader = false;
       state.uploadSuccess = true;
-      state.image = payload;
+      state.image = payload.url;
     },
     [uploadHeroImage.rejected]: (state, { payload }) => {
       state.uploadLoader = false;
@@ -86,6 +89,6 @@ const heroSlice = createSlice({
   },
 });
 
-export const { changeHeroState } = heroSlice.actions;
+export const { changeHeroState, changeImage } = heroSlice.actions;
 
 export default heroSlice.reducer;

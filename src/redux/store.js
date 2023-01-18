@@ -1,5 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userSlice, menuSlice, heroSlice, ourTeamSlice, aboutSlice } from '.';
+import {
+  userSlice,
+  menuSlice,
+  heroSlice,
+  ourTeamSlice,
+  aboutSlice,
+  serviceSlice,
+  serviceListSlice,
+} from '.';
 
 export const store = configureStore({
   reducer: {
@@ -7,6 +15,8 @@ export const store = configureStore({
     menu: menuSlice,
     hero: heroSlice,
     about: aboutSlice,
+    service: serviceSlice,
+    serviceList: serviceListSlice,
     ourTeam: ourTeamSlice,
   },
 

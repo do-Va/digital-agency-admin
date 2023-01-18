@@ -7,7 +7,7 @@ import {
 import convertHtml from '../../utils/convertHtml';
 
 const initialState = {
-  about: [],
+  service: [],
   image: '',
   aboutLoader: false,
   updateLoader: false,
@@ -16,83 +16,83 @@ const initialState = {
   uploadSuccess: true,
 };
 
-export const getAbout = createAsyncThunk(
-  'about/getAbout',
+export const getService = createAsyncThunk(
+  'service/getService',
   async (url, thunkAPI) => {
     return getAllItemsThunk(url, thunkAPI);
   }
 );
 
-export const updateAbout = createAsyncThunk(
-  'about/updateAbout',
+export const updateService = createAsyncThunk(
+  'service/updateService',
   async (object, thunkAPI) => {
     return updateItemThunk(object, thunkAPI);
   }
 );
 
-export const uploadAboutImage = createAsyncThunk(
-  'about/uploadAboutImage',
+export const uploadServiceImage = createAsyncThunk(
+  'service/uploadServiceImage',
   async (data, thunkAPI) => {
     return uploadImageThunk(data, thunkAPI);
   }
 );
 
-const aboutSlice = createSlice({
-  name: 'about',
+const serviceSlice = createSlice({
+  name: 'service',
   initialState,
   reducers: {
-    changeAboutState: (state, { payload }) => {
-      state.about = { ...state.about, [payload.name]: payload.value };
+    changeServiceState: (state, { payload }) => {
+      state.service = { ...state.service, [payload.name]: payload.value };
     },
     changeImage: (state, { payload }) => {
       state.image = payload;
     },
   },
   extraReducers: {
-    [getAbout.pending]: state => {
-      state.aboutLoader = true;
+    [getService.pending]: state => {
+      state.serviceLoader = true;
     },
-    [getAbout.fulfilled]: (state, { payload }) => {
-      state.aboutLoader = false;
-      state.about = {
+    [getService.fulfilled]: (state, { payload }) => {
+      state.serviceLoader = false;
+      state.service = {
         ...payload[0],
         title: convertHtml(payload[0].title),
-        description: convertHtml(payload[0].description),
+        title2: convertHtml(payload[0].title2),
       };
     },
-    [getAbout.rejected]: (state, { payload }) => {
-      state.aboutLoader = false;
+    [getService.rejected]: (state, { payload }) => {
+      state.serviceLoader = false;
     },
 
-    [updateAbout.pending]: state => {
+    [updateService.pending]: state => {
       state.updateLoader = true;
       state.updateSuccess = false;
     },
-    [updateAbout.fulfilled]: (state, { payload }) => {
+    [updateService.fulfilled]: (state, { payload }) => {
       state.updateLoader = false;
       state.updateSuccess = true;
     },
-    [updateAbout.rejected]: (state, { payload }) => {
+    [updateService.rejected]: (state, { payload }) => {
       state.updateLoader = false;
       state.updateSuccess = false;
     },
 
-    [uploadAboutImage.pending]: state => {
+    [uploadServiceImage.pending]: state => {
       state.uploadLoader = true;
       state.uploadSuccess = false;
     },
-    [uploadAboutImage.fulfilled]: (state, { payload }) => {
+    [uploadServiceImage.fulfilled]: (state, { payload }) => {
       state.uploadLoader = false;
       state.uploadSuccess = true;
       state.image = payload.url;
     },
-    [uploadAboutImage.rejected]: (state, { payload }) => {
+    [uploadServiceImage.rejected]: (state, { payload }) => {
       state.uploadLoader = false;
       state.uploadSuccess = false;
     },
   },
 });
 
-export const { changeAboutState, changeImage } = aboutSlice.actions;
+export const { changeServiceState, changeImage } = serviceSlice.actions;
 
-export default aboutSlice.reducer;
+export default serviceSlice.reducer;
