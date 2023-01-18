@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import Button from './Button';
 
-const FormControl = ({ children, method }) => {
+const FormControl = ({ children, method, isDisabled, upload }) => {
   const handleSubmit = evn => {
     evn.preventDefault();
 
@@ -11,6 +11,7 @@ const FormControl = ({ children, method }) => {
   return (
     <FormControlWrapper onSubmit={handleSubmit}>
       {children}
+
       <Button
         type="submit"
         content="save"
@@ -19,6 +20,8 @@ const FormControl = ({ children, method }) => {
         minHeight="50px"
         maxHeight="50px"
         radius="3px"
+        isDisabled={isDisabled}
+        upload={upload}
       />
     </FormControlWrapper>
   );

@@ -1,6 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedLoginRoute, ProtectedDashboardRoute } from './pages';
-import { Dashboard, Header, Hero } from './components/dashboard';
+import {
+  About,
+  Dashboard,
+  Header,
+  Hero,
+  OurTeam,
+} from './components/dashboard';
 import Login from './components/login/Login';
 
 function App() {
@@ -25,6 +31,8 @@ function App() {
       >
         <Route index element={<Header />} />
         <Route path="hero" element={<Hero />} />
+        <Route path="about" element={<About />} />
+        <Route path="our-team" element={<OurTeam />} />
       </Route>
     </Routes>
   );

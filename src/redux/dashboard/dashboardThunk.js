@@ -42,6 +42,7 @@ export const deleteItemThunk = async (url, thunkAPI) => {
 };
 
 export const uploadImageThunk = async (data, thunkAPI) => {
+  console.log(data);
   try {
     const resp = await axios.post(
       'https://api.cloudinary.com/v1_1/dova/image/upload',

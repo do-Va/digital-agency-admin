@@ -7,6 +7,9 @@ import ListControl from './ListControl';
 import SubTitle from './SubTitle';
 import EditGroup from './EditGroup';
 import UploadContainer from './UploadContainer';
+import ControlItem from './ControlItem';
+import ImageContainer from './ImageContainer';
+import ModalUpload from './ModalUpload';
 
 export {
   InputGroup,
@@ -18,4 +21,7 @@ export {
   SubTitle,
   EditGroup,
   UploadContainer,
+  ControlItem,
+  ImageContainer,
+  ModalUpload,
 };

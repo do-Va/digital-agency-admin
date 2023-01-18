@@ -17,7 +17,7 @@ import {
 } from '../../../redux/dashboard/heroSlice';
 
 const Hero = () => {
-  const { image, hero, heroLoader, updateSuccess } = useSelector(
+  const { image, hero, heroLoader, updateSuccess, uploadSuccess } = useSelector(
     store => store.hero
   );
   const dispatch = useDispatch();
@@ -44,8 +44,12 @@ const Hero = () => {
       <Title title="Hero Control" />
 
       <div className="content-container">
-        <FormControl method={handleSubmit}>
-          <SubTitle title="Create Menu Item" />
+        <FormControl
+          method={handleSubmit}
+          isDisabled={uploadSuccess}
+          upload="true"
+        >
+          <SubTitle title="Update Hero" />
           <InputGroup
             name="title"
             title="Title"
@@ -62,7 +66,7 @@ const Hero = () => {
             placeHolder="Menu url (#home)"
           />
 
-          <UploadContainer />
+          <UploadContainer method={uploadHeroImage} />
         </FormControl>
       </div>
     </HeroWrapper>

@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
-import { uploadHeroImage } from '../../redux/dashboard/heroSlice';
 import { MdAddPhotoAlternate } from 'react-icons/md';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 
-const UploadContainer = () => {
+const UploadContainer = ({ method }) => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();
 
@@ -15,11 +14,13 @@ const UploadContainer = () => {
     data.append('file', file);
     data.append('upload_preset', 'upload');
 
-    dispatch(uploadHeroImage(data));
+    dispatch(method(data));
   };
 
   return (
     <UploadContainerWrapper>
+      <h5 className="title">Upload Image</h5>
+
       <div className="formInput">
         <label htmlFor="file">
           <MdAddPhotoAlternate /> Select
@@ -32,7 +33,7 @@ const UploadContainer = () => {
         />
       </div>
 
-      <button className="send" onClick={handleSave}>
+      <button className="send" type="button" onClick={handleSave}>
         <BsFillCloudUploadFill />
         Send
       </button>

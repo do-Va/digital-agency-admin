@@ -24,6 +24,10 @@ const EditGroup = ({ method, name, value, isEdit }) => {
 
 const EditGroupWrapper = styled.div`
   flex: 1;
+
+  input {
+    width: 100%;
+  }
 `;
 
 export default EditGroup;

@@ -17,7 +17,14 @@ const InputGroup = ({
       <label htmlFor={name}>{title}</label>
 
       {textarea ? (
-        <textarea name={name} id={name} value={value}></textarea>
+        <textarea
+          name={name}
+          id={name}
+          value={value}
+          onChange={evn =>
+            dispatch(method({ name: evn.target.name, value: evn.target.value }))
+          }
+        ></textarea>
       ) : (
         <input
           type={type || 'text'}
