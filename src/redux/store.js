@@ -7,6 +7,7 @@ import {
   aboutSlice,
   serviceSlice,
   serviceListSlice,
+  ourWorkSlice,
 } from '.';
 
 export const store = configureStore({
@@ -18,6 +19,7 @@ export const store = configureStore({
     service: serviceSlice,
     serviceList: serviceListSlice,
     ourTeam: ourTeamSlice,
+    ourWork: ourWorkSlice,
   },
 
   // devtoolsu production'da gösterme

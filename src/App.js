@@ -7,6 +7,7 @@ import {
   Hero,
   Service,
   OurTeam,
+  OurWork,
 } from './components/dashboard';
 import Login from './components/login/Login';
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="service" element={<Service />} />
         <Route path="our-team" element={<OurTeam />} />
+        <Route path="our-work" element={<OurWork />} />
       </Route>
     </Routes>
   );

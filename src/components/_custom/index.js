@@ -10,6 +10,7 @@ import UploadContainer from './UploadContainer';
 import ControlItem from './ControlItem';
 import ImageContainer from './ImageContainer';
 import ModalUpload from './ModalUpload';
+import SelectGroup from './SelectGroup';
 
 export {
   InputGroup,
@@ -24,4 +25,5 @@ export {
   ControlItem,
   ImageContainer,
   ModalUpload,
+  SelectGroup,
 };

@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export const getAllOurTeams = createAsyncThunk(
-  'ourTeam/getAllOurTeam',
+  'ourTeam/getAllOurTeams',
   async (url, thunkAPI) => {
     return getAllItemsThunk(url, thunkAPI);
   }

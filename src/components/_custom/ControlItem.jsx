@@ -61,6 +61,7 @@ const ControlItem = ({
               <AiOutlineSave />
             </div>
           )}
+
           <div className="btn btn-red" onClick={() => deleteMethod(_id)}>
             <AiOutlineDelete />
           </div>

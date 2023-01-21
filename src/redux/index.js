@@ -5,6 +5,7 @@ import heroSlice from './dashboard/heroSlice';
 import serviceSlice from './dashboard/serviceSlice';
 import serviceListSlice from './dashboard/serviceListSlice';
 import ourTeamSlice from './dashboard/ourTeamSlice';
+import ourWorkSlice from './dashboard/ourWorkSlice';
 
 export {
   aboutSlice,
@@ -14,4 +15,5 @@ export {
   serviceSlice,
   serviceListSlice,
   ourTeamSlice,
+  ourWorkSlice,
 };

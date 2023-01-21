@@ -27,6 +27,8 @@ const EditGroupWrapper = styled.div`
 
   input {
     width: 100%;
+    border: none;
+    padding: 5px;
   }
 `;
 

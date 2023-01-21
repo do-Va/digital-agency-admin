@@ -20,17 +20,17 @@ const ModalUpload = ({ method, uploadLoader }) => {
 
   return (
     <ModalUploadWrapper>
-      <button className="upload" type="button">
-        <label htmlFor="file">
+      <div className="upload">
+        <label htmlFor="file2">
           <MdAddPhotoAlternate /> Select
         </label>
         <input
           type="file"
-          id="file"
-          onChange={evn => console.log(evn.target.files[0])}
+          id="file2"
+          onChange={evn => setFile(evn.target.files[0])}
           style={{ display: 'none' }}
         />
-      </button>
+      </div>
 
       <button className="send" type="button" onClick={handleSave}>
         {uploadLoader ? (
