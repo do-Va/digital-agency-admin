@@ -73,7 +73,7 @@ const Header = () => {
                   <ControlItem key={item._id} {...item} idx={idx} />
                 ))
               ) : (
-                <p>Listeye menü ekleyin</p>
+                <p>Add menu to List</p>
               )}
             </div>
           )}

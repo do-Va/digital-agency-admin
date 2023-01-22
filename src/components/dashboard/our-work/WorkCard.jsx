@@ -2,13 +2,18 @@ import { useState } from 'react';
 import styled from 'styled-components/macro';
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineSave } from 'react-icons/ai';
 import { BsUpload, BsXLg } from 'react-icons/bs';
-import { EditGroup, ModalUpload } from '../../_custom';
-import { uploadWorkItemImage } from '../../../redux/dashboard/ourWorkSlice';
+import { EditGroup, ModalUpload, SelectGroup } from '../../_custom';
+import {
+  changeOurWorkState,
+  uploadWorkItemImage,
+} from '../../../redux/dashboard/ourWorkSlice';
+import { categories } from '../../../utils/variables';
 
 const WorkCard = ({
   _id,
   alt,
   image,
+  category,
   updateMethod,
   deleteMethod,
   uploadLoader,
@@ -18,6 +23,7 @@ const WorkCard = ({
   const [value, setValue] = useState({
     alt,
     image,
+    category,
   });
 
   return (
@@ -33,6 +39,15 @@ const WorkCard = ({
           name="alt"
           value={value.alt}
         />
+
+        {isEdit && (
+          <SelectGroup
+            objects={categories}
+            method={changeOurWorkState}
+            name="category"
+            value={category}
+          />
+        )}
 
         {isEdit && (
           <>
@@ -85,6 +100,9 @@ const WorkCardWrapper = styled.div`
 
   .content {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   position: relative;

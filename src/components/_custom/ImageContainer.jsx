@@ -2,9 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components/macro';
 import { BsUpload, BsXLg } from 'react-icons/bs';
 import { ModalUpload } from '.';
-import { uploadTeamMemberImage } from '../../redux/dashboard/ourTeamSlice';
 
-const ImageContainer = ({ image, isEdit }) => {
+const ImageContainer = ({ image, isEdit, uploadMethod, uploadLoader }) => {
   const [isShowModal, setIsShowModal] = useState(false);
 
   return (
@@ -22,7 +21,10 @@ const ImageContainer = ({ image, isEdit }) => {
           {isShowModal && (
             <div className="modal">
               <div className="modal-container">
-                <ModalUpload method={uploadTeamMemberImage} />
+                <ModalUpload
+                  uploadMethod={uploadMethod}
+                  uploadLoader={uploadLoader}
+                />
 
                 <div className="float" onClick={() => setIsShowModal(false)}>
                   <BsXLg />

@@ -21,6 +21,7 @@ const InputGroup = ({
           name={name}
           id={name}
           value={value}
+          placeholder={placeHolder}
           onChange={evn =>
             dispatch(method({ name: evn.target.name, value: evn.target.value }))
           }

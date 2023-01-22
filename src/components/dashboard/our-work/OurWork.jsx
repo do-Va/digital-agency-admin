@@ -115,7 +115,7 @@ const OurWork = () => {
                   />
                 ))
               ) : (
-                <p>Add project</p>
+                <p>Add project to List</p>
               )}
             </div>
           )}

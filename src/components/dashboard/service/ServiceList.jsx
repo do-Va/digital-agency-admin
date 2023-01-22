@@ -66,7 +66,7 @@ const ServiceList = () => {
                 <ControlItem key={item._id} {...item} idx={idx} />
               ))
             ) : (
-              <p>Listeye service ekleyin</p>
+              <p>Add service to List</p>
             )}
           </div>
         )}

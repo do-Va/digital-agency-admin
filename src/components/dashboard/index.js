@@ -5,5 +5,15 @@ import Hero from './hero/Hero';
 import Service from './service/Service';
 import OurTeam from './our-team/OurTeam';
 import OurWork from './our-work/OurWork';
+import Testimonial from './testimonial/Testimonial';
 
-export { About, Dashboard, Header, Hero, Service, OurTeam, OurWork };
+export {
+  About,
+  Dashboard,
+  Header,
+  Hero,
+  Service,
+  OurTeam,
+  OurWork,
+  Testimonial,
+};

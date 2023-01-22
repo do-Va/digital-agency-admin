@@ -8,6 +8,7 @@ import {
   Service,
   OurTeam,
   OurWork,
+  Testimonial,
 } from './components/dashboard';
 import Login from './components/login/Login';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="service" element={<Service />} />
         <Route path="our-team" element={<OurTeam />} />
         <Route path="our-work" element={<OurWork />} />
+        <Route path="testimonial" element={<Testimonial />} />
       </Route>
     </Routes>
   );

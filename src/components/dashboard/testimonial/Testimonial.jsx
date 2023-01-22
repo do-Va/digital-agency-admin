@@ -10,38 +10,42 @@ import {
   UploadContainer,
 } from '../../_custom';
 import {
-  changeOurTeamState,
-  getAllOurTeams,
-  createTeamMember,
-  updateTeamMember,
-  deleteTeamMember,
+  changeTestimonialState,
+  getAllTestimonials,
+  createTestimonialMember,
+  updateTestimonialMember,
+  deleteTestimonialMember,
   resetValue,
-  uploadTeamMemberImage,
-} from '../../../redux/dashboard/ourTeamSlice';
+  uploadTestimonialMemberImage,
+} from '../../../redux/dashboard/testimonialSlice';
 import { useEffect } from 'react';
 
-const OurTeam = () => {
+const Testimonial = () => {
   const {
     name,
     title,
     image,
-    ourTeams,
-    ourTeamsLoader,
+    description,
+    testimonials,
+    testimonialsLoader,
     createSuccess,
     deleteSuccess,
     updateSuccess,
     uploadSuccess,
     uploadLoader,
-  } = useSelector(store => store.ourTeam);
+  } = useSelector(store => store.testimonial);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllOurTeams('/our-teams'));
+    dispatch(getAllTestimonials('/testimonial'));
   }, [dispatch, createSuccess, deleteSuccess, updateSuccess]);
 
   const handleSubmit = () => {
     dispatch(
-      createTeamMember({ url: '/our-teams', value: { name, title, image } })
+      createTestimonialMember({
+        url: '/testimonial',
+        value: { name, title, description, image },
+      })
     );
 
     dispatch(resetValue());
@@ -49,24 +53,25 @@ const OurTeam = () => {
 
   const handleUpdate = (_id, value) => {
     dispatch(
-      updateTeamMember({
-        url: `/our-teams/${_id}`,
+      updateTestimonialMember({
+        url: `/testimonial/${_id}`,
         value: {
           name: value.name,
           title: value.title,
           image: image || value.image,
+          description: value.description,
         },
       })
     );
   };
 
   const handleDelete = _id => {
-    dispatch(deleteTeamMember(`/our-teams/${_id}`));
+    dispatch(deleteTestimonialMember(`/testimonial/${_id}`));
   };
 
   return (
-    <OurTeamWrapper>
-      <Title title="Our Team Control" />
+    <TestimonialWrapper>
+      <Title title="Testimonial Control" />
 
       <div className="content-container">
         <FormControl
@@ -74,13 +79,13 @@ const OurTeam = () => {
           isDisabled={uploadSuccess}
           upload="true"
         >
-          <SubTitle title="Create Team Member" />
+          <SubTitle title="Create Testimonial Member" />
 
           <InputGroup
             name="name"
             title="Name"
             value={name}
-            method={changeOurTeamState}
+            method={changeTestimonialState}
             placeHolder="John Doe"
           />
 
@@ -88,48 +93,68 @@ const OurTeam = () => {
             name="title"
             title="Title"
             value={title}
-            method={changeOurTeamState}
+            method={changeTestimonialState}
             placeHolder="Ceo"
           />
 
+          <InputGroup
+            textarea="true"
+            name="description"
+            title="Description"
+            value={description}
+            method={changeTestimonialState}
+            placeHolder="Description"
+          />
+
           <UploadContainer
-            method={uploadTeamMemberImage}
+            method={uploadTestimonialMemberImage}
             uploadLoader={uploadLoader}
           />
         </FormControl>
 
         <ListControl>
-          <SubTitle title="Our Team List" />
+          <SubTitle title="Testimonial List" />
 
-          {ourTeamsLoader ? (
+          {testimonialsLoader ? (
             <div>loading</div>
           ) : (
             <div className="list">
-              {ourTeams.length > 0 ? (
-                ourTeams.map((item, idx) => (
+              {testimonials.length > 0 ? (
+                testimonials.map((item, idx) => (
                   <ControlItem
                     key={item._id}
                     {...item}
                     idx={idx}
                     updateMethod={handleUpdate}
                     deleteMethod={handleDelete}
-                    uploadMethod={uploadTeamMemberImage}
+                    testimonial="true"
                     uploadLoader={uploadLoader}
+                    uploadMethod={uploadTestimonialMemberImage}
                   />
                 ))
               ) : (
-                <p>Add team member to List</p>
+                <p>Add testimonial member to List</p>
               )}
             </div>
           )}
         </ListControl>
       </div>
-    </OurTeamWrapper>
+    </TestimonialWrapper>
   );
 };
 
-const OurTeamWrapper = styled.section`
+const TestimonialWrapper = styled.section`
   flex: 1;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & > *:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
 `;
 
-export default OurTeam;
+export default Testimonial;

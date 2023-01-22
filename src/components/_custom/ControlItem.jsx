@@ -11,16 +11,18 @@ const ControlItem = ({
   title,
   image,
   url,
-  desc,
+  description,
   updateMethod,
   deleteMethod,
+  uploadMethod,
+  uploadLoader,
   testimonial,
 }) => {
   const [value, setValue] = useState({
     name,
     title,
     url,
-    desc,
+    description,
     image,
   });
 
@@ -35,7 +37,12 @@ const ControlItem = ({
       <div className="section-1">
         <p className="number">{idx}</p>
 
-        <ImageContainer image={value.image} isEdit={isEdit} />
+        <ImageContainer
+          image={value.image}
+          isEdit={isEdit}
+          uploadMethod={uploadMethod}
+          uploadLoader={uploadLoader}
+        />
 
         <EditGroup
           method={setValue}
@@ -73,8 +80,9 @@ const ControlItem = ({
           <EditGroup
             method={setValue}
             isEdit={isEdit}
-            name="desc"
-            value={value.desc}
+            name="description"
+            value={value.description}
+            textarea="true"
           />
         )}
       </div>
@@ -94,6 +102,8 @@ const ControlItemWrapper = styled.div`
 
   .section-2 {
     width: 100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
   }
 
   .button-container {

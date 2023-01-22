@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 import { MdAddPhotoAlternate } from 'react-icons/md';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
+import { UpLoading } from '../Loader';
 
-const UploadContainer = ({ method }) => {
+const UploadContainer = ({ method, uploadLoader }) => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();
 
@@ -34,8 +35,14 @@ const UploadContainer = ({ method }) => {
       </div>
 
       <button className="send" type="button" onClick={handleSave}>
-        <BsFillCloudUploadFill />
-        Send
+        {uploadLoader ? (
+          <UpLoading />
+        ) : (
+          <>
+            <BsFillCloudUploadFill />
+            Send
+          </>
+        )}
       </button>
     </UploadContainerWrapper>
   );

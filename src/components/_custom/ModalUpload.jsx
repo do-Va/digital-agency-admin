@@ -5,7 +5,7 @@ import { MdAddPhotoAlternate } from 'react-icons/md';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 import { UpLoading } from '../Loader';
 
-const ModalUpload = ({ method, uploadLoader }) => {
+const ModalUpload = ({ uploadMethod, uploadLoader }) => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const ModalUpload = ({ method, uploadLoader }) => {
     data.append('file', file);
     data.append('upload_preset', 'upload');
 
-    dispatch(method(data));
+    dispatch(uploadMethod(data));
   };
 
   return (
