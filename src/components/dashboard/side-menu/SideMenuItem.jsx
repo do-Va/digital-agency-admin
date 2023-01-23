@@ -2,11 +2,15 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { useLocation } from 'react-router-dom';
 
-const SideMenuItem = ({ name, Icon, url }) => {
+const SideMenuItem = ({ name, Icon, url, setShowMenu }) => {
   const path = useLocation().pathname;
 
   return (
-    <SideMenuItemWrapper to={url} path={path}>
+    <SideMenuItemWrapper
+      to={url}
+      path={path}
+      onClick={() => setShowMenu(false)}
+    >
       <Icon />
 
       <p className="name">{name}</p>

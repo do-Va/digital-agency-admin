@@ -26,7 +26,7 @@ const SideMenu = () => {
 
       <SideMenuTitle />
       {sideMenus.map(item => (
-        <SideMenuItem key={item.id} {...item} />
+        <SideMenuItem key={item.id} {...item} setShowMenu={setShowMenu} />
       ))}
 
       <Button
@@ -50,13 +50,14 @@ const SideMenuWrapper = styled.aside`
   flex-shrink: 0;
   display: flex;
   width: 170px;
+  z-index: 100;
 
   flex-direction: column;
   gap: 5px;
   border-radius: var(--radius);
   position: absolute;
   transition: all 0.2s linear;
-  left: ${props => (props.showMenu ? '-170px' : '10px')};
+  left: ${props => (!props.showMenu ? '-170px' : '10px')};
 
   & > :last-child {
     margin-top: 30px;
