@@ -23,6 +23,7 @@ const SideMenuItemWrapper = styled(Link)`
     props.to === props.path ? 'var(--red)' : 'var(--gray-light)'};
   position: relative;
   text-transform: capitalize;
+  font-size: var(--fs-md);
 
   &::after,
   &::before {
