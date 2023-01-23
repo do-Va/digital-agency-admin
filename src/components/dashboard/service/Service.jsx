@@ -19,8 +19,9 @@ import {
 import ServiceList from './ServiceList';
 
 const Service = () => {
-  const { image, service, serviceLoader, updateSuccess, uploadSuccess } =
-    useSelector(store => store.service);
+  const { image, service, updateSuccess, uploadSuccess } = useSelector(
+    store => store.service
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const Service = () => {
           <InputGroup
             name="title"
             title="Title"
-            value={service.title}
+            value={service.title || ''}
             method={changeServiceState}
             placeHolder="Service title"
           />
@@ -68,7 +69,7 @@ const Service = () => {
           <InputGroup
             name="title2"
             title="Title 2"
-            value={service.title2}
+            value={service.title2 || ''}
             method={changeServiceState}
             placeHolder="Service title2"
           />
@@ -77,7 +78,7 @@ const Service = () => {
             textarea="true"
             name="description"
             title="Description"
-            value={service.description}
+            value={service.description || ''}
             method={changeServiceState}
             placeHolder="Service description"
           />
@@ -85,7 +86,7 @@ const Service = () => {
           <InputGroup
             name="buttonContent"
             title="Button Content"
-            value={service.buttonContent}
+            value={service.buttonContent || ''}
             method={changeServiceState}
             placeHolder="Button content"
           />

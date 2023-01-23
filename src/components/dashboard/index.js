@@ -6,6 +6,7 @@ import Service from './service/Service';
 import OurTeam from './our-team/OurTeam';
 import OurWork from './our-work/OurWork';
 import Testimonial from './testimonial/Testimonial';
+import ContactUs from './contact-us/ContactUs';
 
 export {
   About,
@@ -16,4 +17,5 @@ export {
   OurTeam,
   OurWork,
   Testimonial,
+  ContactUs,
 };

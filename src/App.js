@@ -9,6 +9,7 @@ import {
   OurTeam,
   OurWork,
   Testimonial,
+  ContactUs,
 } from './components/dashboard';
 import Login from './components/login/Login';
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="our-team" element={<OurTeam />} />
         <Route path="our-work" element={<OurWork />} />
         <Route path="testimonial" element={<Testimonial />} />
+        <Route path="contact-us" element={<ContactUs />} />
       </Route>
     </Routes>
   );

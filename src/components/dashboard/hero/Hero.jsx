@@ -58,17 +58,17 @@ const Hero = () => {
           <InputGroup
             name="title"
             title="Title"
-            value={hero.title}
+            value={hero.title || ''}
             method={changeHeroState}
-            placeHolder="Menu title"
+            placeHolder="Hero title"
           />
 
           <InputGroup
             name="buttonContent"
             title="Button Content"
-            value={hero.buttonContent}
+            value={hero.buttonContent || ''}
             method={changeHeroState}
-            placeHolder="Menu url (#home)"
+            placeHolder="Hero Button"
           />
 
           <UploadContainer method={uploadHeroImage} />

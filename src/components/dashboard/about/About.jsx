@@ -58,7 +58,7 @@ const About = () => {
           <InputGroup
             name="title"
             title="Title"
-            value={about.title}
+            value={about.title || ''}
             method={changeAboutState}
             placeHolder="About title"
           />
@@ -67,7 +67,7 @@ const About = () => {
             textarea="true"
             name="description"
             title="Description"
-            value={about.description}
+            value={about.description || ''}
             method={changeAboutState}
             placeHolder="Description"
           />
@@ -75,7 +75,7 @@ const About = () => {
           <InputGroup
             name="buttonContent"
             title="Button Content"
-            value={about.buttonContent}
+            value={about.buttonContent || ''}
             method={changeAboutState}
             placeHolder="Button content"
           />
