@@ -61,7 +61,7 @@ const sideMenus = [
     id: 9,
     name: 'newsletters',
     Icon: GiNewspaper,
-    url: '/admin-dashboard/newsletters',
+    url: '/admin-dashboard/newsletter',
   },
   {
     id: 10,

@@ -10,6 +10,7 @@ import {
   ourWorkSlice,
   testimonialSlice,
   contactUsSlice,
+  newsLetterSlice,
 } from '.';
 
 export const store = configureStore({
@@ -24,6 +25,7 @@ export const store = configureStore({
     ourWork: ourWorkSlice,
     testimonial: testimonialSlice,
     contactUs: contactUsSlice,
+    newsLetter: newsLetterSlice,
   },
 
   // devtoolsu production'da gösterme

@@ -44,7 +44,7 @@ const ContactUs = () => {
         value: {
           title: contactUs.title,
           buttonContent: contactUs.buttonContent,
-          image: image,
+          image: image || contactUs.image,
         },
       })
     );

@@ -10,6 +10,7 @@ import {
   OurWork,
   Testimonial,
   ContactUs,
+  NewsLetter,
 } from './components/dashboard';
 import Login from './components/login/Login';
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="our-work" element={<OurWork />} />
         <Route path="testimonial" element={<Testimonial />} />
         <Route path="contact-us" element={<ContactUs />} />
+        <Route path="newsletter" element={<NewsLetter />} />
       </Route>
     </Routes>
   );

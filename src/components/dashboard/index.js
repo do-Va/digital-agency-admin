@@ -7,6 +7,7 @@ import OurTeam from './our-team/OurTeam';
 import OurWork from './our-work/OurWork';
 import Testimonial from './testimonial/Testimonial';
 import ContactUs from './contact-us/ContactUs';
+import NewsLetter from './newsletter/NewsLetter';
 
 export {
   About,
@@ -18,4 +19,5 @@ export {
   OurWork,
   Testimonial,
   ContactUs,
+  NewsLetter,
 };
