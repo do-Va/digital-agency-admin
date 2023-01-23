@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineSave } from 'react-icons/ai';
 
 import { EditGroup, ImageContainer } from '.';
+import { mediaQuery } from '../../utils/styles-values';
 
 const ControlItem = ({
   _id,
@@ -33,7 +34,7 @@ const ControlItem = ({
   };
 
   return (
-    <ControlItemWrapper>
+    <ControlItemWrapper testimonial={testimonial}>
       <div className="section-1">
         <p className="number">{idx}</p>
 
@@ -44,19 +45,21 @@ const ControlItem = ({
           uploadLoader={uploadLoader}
         />
 
-        <EditGroup
-          method={setValue}
-          isEdit={isEdit}
-          name="name"
-          value={value.name}
-        />
+        <div className="row-container">
+          <EditGroup
+            method={setValue}
+            isEdit={isEdit}
+            name="name"
+            value={value.name}
+          />
 
-        <EditGroup
-          method={setValue}
-          isEdit={isEdit}
-          name="title"
-          value={value.title}
-        />
+          <EditGroup
+            method={setValue}
+            isEdit={isEdit}
+            name="title"
+            value={value.title}
+          />
+        </div>
 
         <div className="button-container">
           {!isEdit ? (
@@ -92,22 +95,32 @@ const ControlItem = ({
 
 const ControlItemWrapper = styled.div`
   min-height: 40px;
-  padding-bottom: 10px;
+  padding: 10px 0px;
 
   .section-1 {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
+
+    .row-container {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
   }
 
   .section-2 {
     width: 100%;
     margin-top: 20px;
     padding-bottom: 20px;
+    text-align: center;
   }
 
   .button-container {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
 
@@ -132,6 +145,28 @@ const ControlItemWrapper = styled.div`
       &-red {
         color: darkred;
       }
+    }
+  }
+
+  @media ${mediaQuery.sm} {
+    .section-1 {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .row-container {
+        flex: 1;
+        flex-direction: ${props => (props.testimonial ? 'column' : 'row')};
+        text-align: left;
+      }
+    }
+
+    .section-2 {
+      text-align: left;
+    }
+
+    .button-container {
+      flex-direction: column;
     }
   }
 `;

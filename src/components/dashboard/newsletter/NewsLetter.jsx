@@ -87,7 +87,7 @@ const NewsLetter = () => {
 };
 
 const NewsLetterWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 `;
 
 export default NewsLetter;

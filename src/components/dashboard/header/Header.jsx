@@ -15,6 +15,7 @@ import {
   getAllMenus,
 } from '../../../redux/dashboard/menuSlice';
 import ControlItem from './ControlItem';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const Header = () => {
   const {
@@ -84,10 +85,11 @@ const Header = () => {
 };
 
 const HeaderWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 
   .vertical-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 20px;
   }
@@ -99,6 +101,12 @@ const HeaderWrapper = styled.section`
 
     & > *:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @media ${mediaQuery.sm} {
+    .vertical-container {
+      flex-direction: row;
     }
   }
 `;

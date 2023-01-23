@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components/macro';
 import { BsUpload, BsXLg } from 'react-icons/bs';
 import { ModalUpload } from '.';
+import { mediaQuery } from '../../utils/styles-values';
 
 const ImageContainer = ({ image, isEdit, uploadMethod, uploadLoader }) => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -42,8 +43,8 @@ const ImageContainerWrapper = styled.div`
   position: relative;
 
   .image {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -98,6 +99,13 @@ const ImageContainerWrapper = styled.div`
         border: 1px solid var(--dark-blue);
         cursor: pointer;
       }
+    }
+  }
+
+  @media ${mediaQuery.sm} {
+    .image {
+      width: 50px;
+      height: 50px;
     }
   }
 `;

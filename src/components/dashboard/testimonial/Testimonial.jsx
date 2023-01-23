@@ -144,7 +144,7 @@ const Testimonial = () => {
 };
 
 const TestimonialWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 
   .list {
     display: flex;

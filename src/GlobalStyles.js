@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components/macro';
+import { mediaQuery } from './utils/styles-values';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -46,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 html { 
-  font-size: 100%; /*16px*/
+  font-size: 80%; 
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #FF5678 #020E35;
@@ -76,7 +77,7 @@ body {
   line-height: 1.5;
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
-  color: var(--dark-blue);
+  color: var(--dark-blue);  
 }
 
 img, picture, video, canvas, svg {
@@ -132,6 +133,12 @@ small, .text_small { font-size: var(--fs-sm); }
   display: flex;
   flex-direction: column;
   gap: 50px;
+}
+
+@media ${mediaQuery.sm} {
+  html {
+    font-size: 100%; /*16px*/
+  }
 }
 `;
 

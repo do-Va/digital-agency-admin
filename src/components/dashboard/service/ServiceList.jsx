@@ -9,6 +9,7 @@ import {
   getAllServiceList,
 } from '../../../redux/dashboard/serviceListSlice';
 import ControlItem from './ControlItem';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const ServiceList = () => {
   const {
@@ -80,6 +81,7 @@ const ServiceListWrapper = styled.section`
 
   .vertical-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 20px;
   }
@@ -97,6 +99,12 @@ const ServiceListWrapper = styled.section`
 
   &:last-child > :last-child {
     margin-top: 50px;
+  }
+
+  @media ${mediaQuery.sm} {
+    .vertical-container {
+      flex-direction: row;
+    }
   }
 `;
 

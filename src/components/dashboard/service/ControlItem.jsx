@@ -8,6 +8,7 @@ import {
   deleteListItem,
 } from '../../../redux/dashboard/serviceListSlice';
 import EditGroup from '../../_custom/EditGroup';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const ControlItem = ({ _id, idx, title, description }) => {
   const [value, setValue] = useState({
@@ -61,7 +62,9 @@ const ControlItem = ({ _id, idx, title, description }) => {
 };
 
 const ControlItemWrapper = styled.div`
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 50px;
   height: max-content;
@@ -93,6 +96,10 @@ const ControlItemWrapper = styled.div`
         color: darkred;
       }
     }
+  }
+
+  @media ${mediaQuery.sm} {
+    flex-direction: row;
   }
 `;
 

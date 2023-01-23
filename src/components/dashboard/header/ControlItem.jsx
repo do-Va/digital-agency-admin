@@ -5,6 +5,7 @@ import { AiOutlineEdit, AiOutlineDelete, AiOutlineSave } from 'react-icons/ai';
 
 import { updateMenu, deleteMenu } from '../../../redux/dashboard/menuSlice';
 import EditGroup from '../../_custom/EditGroup';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const ControlItem = ({ _id, idx, title, url }) => {
   const [value, setValue] = useState({
@@ -20,21 +21,23 @@ const ControlItem = ({ _id, idx, title, url }) => {
 
   return (
     <ControlItemWrapper>
-      <p className="number">{idx}</p>
+      <div className="row-container">
+        <p className="number">{idx}</p>
 
-      <EditGroup
-        method={setValue}
-        isEdit={isEdit}
-        name="title"
-        value={value.title}
-      />
+        <EditGroup
+          method={setValue}
+          isEdit={isEdit}
+          name="title"
+          value={value.title}
+        />
 
-      <EditGroup
-        method={setValue}
-        isEdit={isEdit}
-        name="url"
-        value={value.url}
-      />
+        <EditGroup
+          method={setValue}
+          isEdit={isEdit}
+          name="url"
+          value={value.url}
+        />
+      </div>
 
       <div className="button-container">
         {!isEdit ? (
@@ -59,14 +62,23 @@ const ControlItem = ({ _id, idx, title, url }) => {
 
 const ControlItemWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 50px;
-  height: 40px;
   padding-bottom: 10px;
 
-  .button-container {
+  .row-container {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    height: 40px;
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
     gap: 10px;
 
     .btn {
@@ -90,6 +102,10 @@ const ControlItemWrapper = styled.div`
         color: darkred;
       }
     }
+  }
+
+  @media ${mediaQuery.sm} {
+    flex-direction: row;
   }
 `;
 

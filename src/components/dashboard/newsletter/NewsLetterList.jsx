@@ -10,13 +10,21 @@ const NewsLetterList = () => {
     <NewsLetterListWrapper>
       <SubTitle title="NewsLetter List" />
 
-      {newsLetterList.map((item, idx) => (
-        <NewsLetterMember key={item._id} idx={idx} {...item} />
-      ))}
+      <div className="list">
+        {newsLetterList.map((item, idx) => (
+          <NewsLetterMember key={item._id} idx={idx} {...item} />
+        ))}
+      </div>
     </NewsLetterListWrapper>
   );
 };
 
-const NewsLetterListWrapper = styled.div``;
+const NewsLetterListWrapper = styled.div`
+  .list {
+    & > *:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+`;
 
 export default NewsLetterList;

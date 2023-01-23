@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const NewsLetterMember = ({ idx, name, email, message }) => {
   return (
@@ -12,8 +13,10 @@ const NewsLetterMember = ({ idx, name, email, message }) => {
 
 const NewsLetterMemberWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: baseline;
   gap: 20px;
+  padding: 10px 0px;
 
   & > *:not(:first-child) {
     flex: 1;
@@ -29,6 +32,10 @@ const NewsLetterMemberWrapper = styled.div`
 
   .email {
     color: var(--gray-light);
+  }
+
+  @media ${mediaQuery.md} {
+    flex-direction: row;
   }
 `;
 

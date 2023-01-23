@@ -101,7 +101,7 @@ const Service = () => {
 };
 
 const ServiceWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 `;
 
 export default Service;

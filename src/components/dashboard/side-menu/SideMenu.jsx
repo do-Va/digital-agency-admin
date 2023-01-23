@@ -4,6 +4,7 @@ import sideMenus from '../../../constants/side-menus';
 import { SideMenuItem, SideMenuTitle } from '.';
 import { Button } from '../../_custom';
 import { logoutUser } from '../../../redux/user/userSlice';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -37,14 +38,20 @@ const SideMenuWrapper = styled.aside`
   padding: 20px 20px;
   height: max-content;
   flex-shrink: 0;
+  display: none;
 
-  display: flex;
   flex-direction: column;
   gap: 5px;
   border-radius: var(--radius);
+  position: absolute;
 
   & > :last-child {
     margin-top: 30px;
+  }
+
+  @media ${mediaQuery.sm} {
+    display: flex;
+    position: relative;
   }
 `;
 

@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import { MdAddPhotoAlternate } from 'react-icons/md';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 import { UpLoading } from '../Loader';
+import { mediaQuery } from '../../utils/styles-values';
 
 const UploadContainer = ({ method, uploadLoader }) => {
   const [file, setFile] = useState();
@@ -22,36 +23,45 @@ const UploadContainer = ({ method, uploadLoader }) => {
     <UploadContainerWrapper>
       <h5 className="title">Upload Image</h5>
 
-      <div className="formInput">
-        <label htmlFor="file">
-          <MdAddPhotoAlternate /> Select
-        </label>
-        <input
-          type="file"
-          id="file"
-          onChange={e => setFile(e.target.files[0])}
-          style={{ display: 'none' }}
-        />
-      </div>
+      <div className="upload-container">
+        <div className="formInput">
+          <label htmlFor="file">
+            <MdAddPhotoAlternate /> Select
+          </label>
+          <input
+            type="file"
+            id="file"
+            onChange={e => setFile(e.target.files[0])}
+            style={{ display: 'none' }}
+          />
+        </div>
 
-      <button className="send" type="button" onClick={handleSave}>
-        {uploadLoader ? (
-          <UpLoading />
-        ) : (
-          <>
-            <BsFillCloudUploadFill />
-            Send
-          </>
-        )}
-      </button>
+        <button className="send" type="button" onClick={handleSave}>
+          {uploadLoader ? (
+            <UpLoading />
+          ) : (
+            <>
+              <BsFillCloudUploadFill />
+              Send
+            </>
+          )}
+        </button>
+      </div>
     </UploadContainerWrapper>
   );
 };
 
 const UploadContainerWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  .upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
   label,
   .send {

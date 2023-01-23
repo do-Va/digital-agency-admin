@@ -3,8 +3,6 @@ import {
   MdOutlineDesignServices,
   MdSupervisedUserCircle,
   MdConnectWithoutContact,
-  MdOutlineCallToAction,
-  MdOutlineCopyright,
 } from 'react-icons/md';
 import { SiAboutdotme } from 'react-icons/si';
 import {
@@ -62,18 +60,6 @@ const sideMenus = [
     name: 'newsletters',
     Icon: GiNewspaper,
     url: '/admin-dashboard/newsletter',
-  },
-  {
-    id: 10,
-    name: 'footer',
-    Icon: MdOutlineCallToAction,
-    url: '/admin-dashboard/footer',
-  },
-  {
-    id: 11,
-    name: 'copyright',
-    Icon: MdOutlineCopyright,
-    url: '/admin-dashboard/copyright',
   },
 ];
 

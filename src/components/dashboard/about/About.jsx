@@ -88,7 +88,7 @@ const About = () => {
 };
 
 const AboutWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 `;
 
 export default About;

@@ -36,7 +36,7 @@ const EditGroup = ({ method, name, value, isEdit, textarea }) => {
 };
 
 const EditGroupWrapper = styled.div`
-  flex: 1;
+  width: 100%;
 
   input {
     width: 100%;

@@ -19,6 +19,7 @@ import {
   uploadTeamMemberImage,
 } from '../../../redux/dashboard/ourTeamSlice';
 import { useEffect } from 'react';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const OurTeam = () => {
   const {
@@ -129,7 +130,22 @@ const OurTeam = () => {
 };
 
 const OurTeamWrapper = styled.section`
-  flex: 1;
+  width: 100%;
+
+  .list {
+    & > *:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @media ${mediaQuery.sm} {
+    .list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(495px, 1fr));
+      gap: 20px;
+    }
+  }
 `;
 
 export default OurTeam;

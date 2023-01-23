@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { mediaQuery } from '../../../utils/styles-values';
 
 const ContactUsMember = ({ idx, name, email, message }) => {
   return (
@@ -17,6 +18,7 @@ const ContactUsMember = ({ idx, name, email, message }) => {
 
 const ContactUsMemberWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: baseline;
   gap: 20px;
 
@@ -50,6 +52,10 @@ const ContactUsMemberWrapper = styled.div`
       top: 0;
       left: 0;
     }
+  }
+
+  @media ${mediaQuery.md} {
+    flex-direction: row;
   }
 `;
 

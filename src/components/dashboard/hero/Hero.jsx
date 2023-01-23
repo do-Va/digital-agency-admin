@@ -79,7 +79,7 @@ const Hero = () => {
 };
 
 const HeroWrapper = styled.section`
-  flex: 1;
+  width: 100%;
 `;
 
 export default Hero;
