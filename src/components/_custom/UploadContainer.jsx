@@ -4,7 +4,6 @@ import styled from 'styled-components/macro';
 import { MdAddPhotoAlternate } from 'react-icons/md';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 import { UpLoading } from '../Loader';
-import { mediaQuery } from '../../utils/styles-values';
 
 const UploadContainer = ({ method, uploadLoader }) => {
   const [file, setFile] = useState();

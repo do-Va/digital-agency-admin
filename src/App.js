@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { ProtectedLoginRoute, ProtectedDashboardRoute } from './pages';
+import { ProtectedLoginRoute, ProtectedDashboardRoute, Error } from './pages';
 import {
   About,
   Dashboard,
@@ -44,6 +44,7 @@ function App() {
         <Route path="contact-us" element={<ContactUs />} />
         <Route path="newsletter" element={<NewsLetter />} />
       </Route>
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 }

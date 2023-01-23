@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 
@@ -18,7 +18,7 @@ import {
 } from '../../../redux/dashboard/heroSlice';
 
 const Hero = () => {
-  const { image, hero, heroLoader, updateSuccess, uploadSuccess } = useSelector(
+  const { image, hero, updateSuccess, uploadSuccess } = useSelector(
     store => store.hero
   );
   const dispatch = useDispatch();
